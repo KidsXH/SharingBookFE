@@ -1,3 +1,14 @@
 {
-  "message": "hello i18n !!"
+  "message": "hello i18n !!",
+  "hello": "Hello World!",
+  "recommendations": "推荐",
+  "books": "书籍",
+  "bookLists": "书单",
+  "rankLists": "榜单",
+  "authors": "作家",
+  "search": "搜索",
+  "login": "登录",
+  "register": "注册",
+  "username": "用户名",
+  "password": "密码"
 }
