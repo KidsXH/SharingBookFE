@@ -18,17 +18,17 @@
       </v-btn>
     </v-toolbar-items>
     <v-spacer />
-    <SearchInput />
-    <AccountButton />
+    <search-input />
+    <login-button @register="openReg" />
   </v-toolbar>
 </template>
 
 <script>
   import SearchInput from "./SearchInput";
-  import AccountButton from "./LoginButton";
+  import LoginButton from "./LoginButton";
   export default {
     name: "NavigationBar",
-    components: {AccountButton, SearchInput},
+    components: {LoginButton, SearchInput},
     data() {
       return {
         items: [
@@ -38,6 +38,11 @@
           { title: 'books', path: '/books' },
           { title: 'authors', path: '/authors'}
         ]
+      }
+    },
+    methods: {
+      openReg() {
+        alert('reg')
       }
     }
   }
