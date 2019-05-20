@@ -1,0 +1,12 @@
+@font-face {
+    font-family: FZCYJ;
+    src: url('../assets/font/FZCYJ.ttf');
+}
+.blank-row {
+    padding-top: 60px;
+}
+.separate-line {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #E0E0E0;
+}
