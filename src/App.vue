@@ -1,14 +1,8 @@
 <template>
-  <v-app>
+  <v-app id="app">
     <navigation-bar />
     <v-content>
-      <v-container>
-        <v-layout>
-          <v-flex xs12>
-            <router-view />
-          </v-flex>
-        </v-layout>
-      </v-container>
+      <router-view />
     </v-content>
     <v-footer />
   </v-app>
@@ -24,3 +18,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+  #app {
+    font-family: sans-serif;
+  }
+</style>

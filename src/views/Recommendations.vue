@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-  import RecommendCard from "../components/RecommendCard";
+  import RecommendCard from "../components/RecommendationCard";
 
   export default {
     name: "recommendations",

@@ -123,12 +123,6 @@
 </script>
 
 <style scoped>
-  @font-face {
-    font-family: 'Material Icons Outlined';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/materialiconsoutlined/v8/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.woff2) format('woff2');
-  }
 
   .material-icons-outlined {
     font-family: 'Material Icons Outlined';
