@@ -1,12 +1,16 @@
 <template>
   <v-app>
-    <NavigationBar />
-
+    <navigation-bar />
     <v-content>
-      <router-view />
+      <v-container>
+        <v-layout>
+          <v-flex xs12>
+            <router-view />
+          </v-flex>
+        </v-layout>
+      </v-container>
     </v-content>
-
-    <v-footer app></v-footer>
+    <v-footer />
   </v-app>
 </template>
 
@@ -18,10 +22,5 @@ export default {
   components: {
     NavigationBar
   },
-  data () {
-    return {
-      //
-    }
-  }
 }
 </script>

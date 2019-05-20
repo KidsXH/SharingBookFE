@@ -10,5 +10,9 @@
   "login": "登录",
   "register": "注册",
   "username": "用户名",
-  "password": "密码"
+  "password": "密码",
+  "confirmPassword": "确认密码",
+  "email": "邮箱",
+  "submit": "提交",
+  "cancel": "取消"
 }
