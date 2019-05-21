@@ -24,11 +24,6 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: '/bookLists',
-      name: 'bookLists',
-      component: () => import('./views/BookLists.vue')
-    },
-    {
       path: '/books',
       name: 'books',
       component: () => import('./views/Books.vue')
