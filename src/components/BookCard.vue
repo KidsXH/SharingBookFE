@@ -22,7 +22,7 @@
                 </v-flex>
                 <v-flex>
                   <v-rating
-                    :value="value"
+                    :value="rating"
                     color="amber"
                     dense
                     half-increments
@@ -34,7 +34,7 @@
                 </v-flex>
                 <v-flex xs2>
                   <div class="grey--text text--darken-2 caption">
-                    <span>({{ value }})</span>
+                    <span>({{ rating }})</span>
                   </div>
                 </v-flex>
                 <v-flex xs12 class="grey--text" py-1>
@@ -90,7 +90,7 @@
         'showBookDetail',
       ]),
       favourite_change: function () {
-        this.isfavourite = !this.isfavourite
+        this.isFavourite = !this.isFavourite
       },
       set_reviews: function () {
       },    //改变评论人数
