@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="isVisible" width="500">
+  <v-dialog v-model="bookDetailDialog" width="500">
     <v-card>
       <v-img
         :aspect-ratio="16/9"
@@ -27,7 +27,7 @@
         <v-btn
           color="primary"
           flat
-          @click="dialog = false"
+          @click="bookDetailDialog = false"
           v-if="can_borrowed"
         >
           借书
@@ -47,16 +47,16 @@
 <script>
   export default {
     name: "BookDetailCard",
-    data() {
-      return {
-        isVisible: false,
+    computed: {
+      bookDetailDialog: {
+        get () {
+          return this.$store.state.bookDetailDialog
+        },
+        set (value) {
+          this.$store.commit('updateBookDetailDialog', value)
+        }
       }
     },
-    methods: {
-      show() {
-        this.isVisible = true
-      }
-    }
   }
 </script>
 

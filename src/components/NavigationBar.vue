@@ -24,6 +24,7 @@
 
     <login-button @register="showRegisterModal" />
     <register-modal ref="registerModal"/>
+    <book-detail-card />
     <Books
         ref="myBooks"
         parentToChild= "passValue"
@@ -38,9 +39,11 @@
   import LoginButton from "./LoginButton";
   import RegisterModal from "./RegisterModal";
   import Books from "../views/Books";
+  import BookDetailCard from "./BookDetailCard";
+
   export default {
     name: "NavigationBar",
-    components: {Books, RegisterModal, LoginButton, SearchInput},
+    components: {BookDetailCard, Books, RegisterModal, LoginButton, SearchInput},
     data() {
       return {
         passValue: "",

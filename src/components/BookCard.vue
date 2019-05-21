@@ -1,6 +1,5 @@
 <template>
   <div id="book-card-component">
-    <book-detail-card ref="dialog"/>
     <v-hover>
       <v-card
         :aspect-ratio="16/9"
@@ -14,7 +13,7 @@
               <v-img
                 :aspect-ratio="210/297"
                 :src="images"
-              />   <!-- 图片（书籍的作者的）-->
+              />
             </v-flex>
             <v-flex xs7>
               <v-layout row wrap pl-3 align-center justify-start fill-height>
@@ -43,11 +42,11 @@
                 </v-flex>
                 <v-layout align-center justify-start row>
                   <v-btn icon @click="favourite_change">
-                    <v-icon color="pink" v-if="isfavourite">favorite</v-icon>  <!-- 图标样式-->
+                    <v-icon color="pink" v-if="isFavourite">favorite</v-icon>
                     <v-icon v-else>favorite_border</v-icon>
                   </v-btn>
                   <v-spacer/>
-                  <v-btn icon @click.stop="$refs.dialog.show()">
+                  <v-btn icon @click.stop="showBookDetail()">
                     <v-icon class="material-icons-outlined">book</v-icon>
                   </v-btn>
                 </v-layout>
@@ -61,33 +60,35 @@
 </template>
 
 <script>
-  import BookDetailCard from "./BookDetailCard";
+  import { mapMutations } from 'vuex'
   export default {
-    components: {BookDetailCard},
+    components: {},
     data: () => ({
       dialog: false,
     }),
     props: {
       points: {
         type: Number,
-        default: 5,
+        default: 5.0,
       },   //借阅所需积分
       hot: Number,   //热度
       can_borrowed: Boolean,  //是否可以借书
-      isreviewd: Boolean, //是否已经评星
       tag1: String,   //标签1
       tag2: String,   //标签2
       tag3: String,   //标签3
       reviews: Number,  //评论人数
-      value: Number,  //星级(开始为综合星级，评论后为评级的星级)
+      rating: Number,  //星级(开始为综合星级，评论后为评级的星级)
       images: String, //图片位置信息
       title: String, //标题（书名作者名）
       author: String,//作者名
       category: String,//分类信息（可以为数组逐条显示）
-      isfavourite: Boolean, //是否为收藏的书籍、作家
+      isFavourite: Boolean, //是否为收藏的书籍、作家
       messages: String //简介信息
     },
     methods: {
+      ...mapMutations([
+        'showBookDetail',
+      ]),
       favourite_change: function () {
         this.isfavourite = !this.isfavourite
       },
@@ -123,20 +124,4 @@
 </script>
 
 <style scoped>
-
-  .material-icons-outlined {
-    font-family: 'Material Icons Outlined';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    -webkit-font-feature-settings: 'liga';
-    -webkit-font-smoothing: antialiased;
-  }
 </style>
