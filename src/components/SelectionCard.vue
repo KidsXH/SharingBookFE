@@ -29,29 +29,29 @@
           {{item}}
         </v-chip>
       </v-layout>
-      <v-layout align-center pa-1>
-        <v-flex xs1 class="title text-sm-center">
-          <v-btn dark color="red accent-3">
-            <v-icon left>tag_faces</v-icon>
-            {{$t('tags')}}
-          </v-btn>
+      <v-layout pa-1>
+        <v-flex xs12>
+          <div style="border-bottom: 1px solid #E0E0E0"></div>
         </v-flex>
-        <v-chip mt-0 outline color="red"
-                v-for="item in ['All', 'Show books']"
-                :key="item"
-        >
-          {{item}}
-        </v-chip>
       </v-layout>
       <v-layout align-center pa-1>
-        <v-flex xs1 class="title text-sm-center">{{$t('selected')}}</v-flex>
-        <v-chip mt-0 color="grey"
-                v-for="item in ['All', 'Show books']"
+        <v-chip mt-0 outline color="red"
+                v-for="item in tags"
                 :key="item"
-                close
         >
           {{item}}
         </v-chip>
+        <v-spacer />
+        <v-flex xs2>
+          <v-select
+            :items="tags"
+            label="Default order"
+            solo
+            dense
+            transition="slide-y-transition"
+            hide-details
+          ></v-select>
+        </v-flex>
       </v-layout>
     </v-container>
   </v-card>

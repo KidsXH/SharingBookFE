@@ -4,11 +4,9 @@
       <v-flex xs12>
         <selection-card/>
       </v-flex>
+      <v-flex xs12 pa-2/>
       <v-flex xs12>
-        <div class="separate-line"></div>
-      </v-flex>
-      <v-flex xs12 style="margin-top: -1rem">
-        <book-grid-list title="List" pagination/>
+        <book-grid-list pagination/>
       </v-flex>
     </v-layout>
   </v-container>
