@@ -10,20 +10,24 @@
 
 <script>
 import NavigationBar from "./components/NavigationBar";
+import { mapActions } from 'vuex'
 
 export default {
   name: 'App',
   components: {
     NavigationBar
   },
+  created() {
+    this.getProfile()
+  },
+  methods: {
+    ...mapActions(['getProfile'])
+  }
 }
 </script>
 
 <style scoped>
   #app {
     font-family: sans-serif;
-  }
-  .fadeInUp-enter-active {
-    animation: fadeInUp .8s;
   }
 </style>

@@ -19,10 +19,15 @@
     </v-toolbar-items>
     <v-spacer />
 
-    <search-input />
+    <search-input/>
 
-    <v-btn flat icon @click.stop="clickBtnLogin">
-      <v-icon>account_circle</v-icon>
+    <v-btn flat outline @click.stop="clickBtnProfile" color="primary" v-if="isAuth">
+      <v-icon left>account_circle</v-icon>
+      {{$t('profile')}}
+    </v-btn>
+    <v-btn flat outline @click.stop="clickBtnLogin" v-else>
+      <v-icon left>account_circle</v-icon>
+      {{$t('login')}}
     </v-btn>
 
     <general-modal />
@@ -30,7 +35,7 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   import SearchInput from "./SearchInput";
   import GeneralModal from "./GeneralModal";
 
@@ -47,11 +52,17 @@
         ]
       }
     },
+    computed: {
+      ...mapGetters(['isAuth'])
+    },
     methods: {
       ...mapActions(['changeModalStatus']),
       clickBtnLogin() {
         this.changeModalStatus({mode: 'login', visible: true});
-      }
+      },
+      clickBtnProfile() {
+        this.changeModalStatus({mode: 'profile', visible: true});
+      },
     }
   }
 </script>

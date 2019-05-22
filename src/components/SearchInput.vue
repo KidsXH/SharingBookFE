@@ -1,11 +1,11 @@
 <template>
-    <div style="width: 20rem">
-    <v-text-field
-            :placeholder="$t('search')"
-            prepend-inner-icon="search"
-            clearable
-            v-on:keyup.enter="search"
-    ></v-text-field>
+    <div style="width: 20rem;padding-right: 20px">
+        <v-text-field
+          :label="$t('search')"
+          prepend-inner-icon="search"
+          clearable
+          single-line
+        ></v-text-field>
     </div>
 </template>
 

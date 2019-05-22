@@ -33,8 +33,8 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
-  import utils from '../utils/axios'
+  import { mapState, mapActions } from 'vuex'
+  import api from '../utils/axios'
 
   export default {
     name: "Login",
@@ -44,8 +44,11 @@
         password: '',
       }
     },
+    computed: {
+      ...mapState(['isAuth'])
+    },
     methods: {
-      ...mapActions(['changeModalStatus']),
+      ...mapActions(['changeModalStatus', 'getProfile']),
       $_LoginModal_handleRegister() {
         this.changeModalStatus({visible: false}).then(
           () => {
@@ -54,12 +57,13 @@
         )
       },
       $_LoginModal_handleLogin() {
-        utils.login({
+        api.login({
           username: this.username,
           password: this.password,
         }).then(res => {
           if (res.status === 201) {
             alert(res.data.message);
+            this.getProfile();
             this.changeModalStatus({visible: false});
           } else {
             alert('Fail: ' + res.data.message);
