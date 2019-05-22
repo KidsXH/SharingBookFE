@@ -18,22 +18,9 @@
 
   export default {
     components: {BookGridList, SelectionCard},
-    props: ['parentToChild'],
     data() {
       return {
-        active: 0,//当前分类页码
         page: 1,//当前分页页码
-        isSame: false,
-        classification: ["item1", "item2", "item3", "item4", "item5"],
-        sortItems: ["按点击量排列", "按星级排列"],
-        wordNum: ["0-100", "100-1000", "1000-1w"],
-        inStock: ["有", "无"],
-        newChip: {//新筛选框
-          inText: "",
-          yes: true,
-        },
-        curChips: [],//当前存在的筛选框
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
       }
     },
     methods: {

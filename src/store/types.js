@@ -12,4 +12,5 @@ function keyMirror (obj) {
 export default keyMirror({
   'CHANGE_MODAL_STATUS': null,
   'CHANGE_PROFILE': null,
+  'CHANGE_SEARCH_TEXT': null,
 })

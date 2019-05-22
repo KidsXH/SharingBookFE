@@ -48,6 +48,7 @@ export default new Vuex.Store({
       visible: false
     },
     profile: {},
+    searchText: '',
   },
   getters: {
     isAuth: state => {
@@ -56,11 +57,17 @@ export default new Vuex.Store({
   },
   mutations: {
     ...userMutations,
+    [types.CHANGE_SEARCH_TEXT] (state, { text }) {
+      state.searchText = text
+    },
   },
   actions: {
     ...userActions,
     changeModalStatus({commit}, payload) {
       commit(types.CHANGE_MODAL_STATUS, payload)
+    },
+    changeSearchText({commit}, payload) {
+      commit(types.CHANGE_SEARCH_TEXT, payload)
     },
   }
 })
