@@ -2,7 +2,7 @@
   <v-toolbar app>
     <v-toolbar-title class="nav-title">
       <router-link to="home" tag="span" style="cursor: pointer">
-        {{$t('hello')}}{{passValue}}
+        {{$t('hello')}}
       </router-link>
     </v-toolbar-title>
     <v-toolbar-items>
@@ -18,11 +18,10 @@
       </v-btn>
     </v-toolbar-items>
     <v-spacer />
-    <search-input
-            @sendValueToParent = "getValueFromChild"
-    />
 
-    <v-btn flat icon @click.stop="clickBtnLogin" >
+    <search-input />
+
+    <v-btn flat icon @click.stop="clickBtnLogin">
       <v-icon>account_circle</v-icon>
     </v-btn>
 

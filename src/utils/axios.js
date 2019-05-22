@@ -1,14 +1,12 @@
-export function popMessage(msg) {
-  alert(msg)
-}
-
-// axios
-import axios from 'axios'
+/**
+ * use axios to implement http request
+ */
+import axios from 'axios/index'
 
 axios.defaults.baseURL = '/api/';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.xsrfCookieName = 'csrftoken';
-axios.defaults.withCredentials=true;
+axios.defaults.withCredentials=true; //cors required
 
 /**
  * @param url
@@ -17,13 +15,7 @@ axios.defaults.withCredentials=true;
  * @param data post data, use for method put|post
  * @returns {Promise}
  */
-/*
-axios.interceptors.response.use(response => {
-  const sessionCookie = Cookie.get()
-  alert('Cookie: ' + sessionCookie)
-  return response
-})
-*/
+
 function ajax (url, method, options) {
   if (options !== undefined) {
     var {params = {}, data = {}} = options

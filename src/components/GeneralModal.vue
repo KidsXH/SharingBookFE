@@ -7,10 +7,15 @@
 <script>
   import {mapState, mapActions} from 'vuex'
   import login from './Login'
+  import register from './Register'
+  import profile from './ProfileCard'
+
   export default {
     name: "GeneralModal",
     components: {
-      login
+      login,
+      register,
+      profile,
     },
     computed: {
       ...mapState(['modalStatus']),
@@ -24,7 +29,7 @@
       }
     },
     methods: {
-      ...mapActions['changeModalStatus']
+      ...mapActions(['changeModalStatus']),
     }
   }
 </script>

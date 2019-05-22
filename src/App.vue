@@ -23,4 +23,7 @@ export default {
   #app {
     font-family: sans-serif;
   }
+  .fadeInUp-enter-active {
+    animation: fadeInUp .8s;
+  }
 </style>
