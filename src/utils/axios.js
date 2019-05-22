@@ -60,4 +60,7 @@ export default {
   getTags() {
     return ajax('tags/', 'get')
   },
+  getCategories() {
+    return ajax('categories/', 'get')
+  }
 }

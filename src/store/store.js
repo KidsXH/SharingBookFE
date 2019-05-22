@@ -51,6 +51,7 @@ export default new Vuex.Store({
     searchText: null,
     bookList: [],
     tagList: [],
+    categoryList: [],
   },
   getters: {
     isAuth: state => {
@@ -67,6 +68,9 @@ export default new Vuex.Store({
     },
     [types.CHANGE_TAG_LIST] (state, { list }) {
       state.tagList = list;
+    },
+    [types.CHANGE_CATEGORY_LIST] (state, { list }) {
+      state.categoryList = list;
     },
   },
   actions: {
@@ -91,8 +95,17 @@ export default new Vuex.Store({
     getAllTags({commit}) {
       api.getTags().then(
         res => {
-          alert(res.status);
           commit(types.CHANGE_TAG_LIST, { list: res.data.results })
+        },
+        err => {
+          alert(err)
+        }
+      );
+    },
+    getAllCategories({commit}) {
+      api.getCategories().then(
+        res => {
+          commit(types.CHANGE_CATEGORY_LIST, { list: res.data.results })
         },
         err => {
           alert(err)

@@ -9,10 +9,10 @@
           </v-btn>
         </v-flex>
         <v-chip mt-0 outline color="blue"
-                v-for="item in categories"
-                :key="item"
+                v-for="cat in categoryList"
+                :key="cat.category_name"
         >
-          {{item}}
+          {{cat.category_name}}
         </v-chip>
       </v-layout>
       <v-layout align-center pa-1>
@@ -74,12 +74,13 @@
     },
     created() {
       this.getAllTags();
+      this.getAllCategories();
     },
     computed: {
-      ...mapState(['tagList'])
+      ...mapState(['tagList', 'categoryList'])
     },
     methods: {
-      ...mapActions(['getAllTags'])
+      ...mapActions(['getAllTags', 'getAllCategories'])
     }
   }
 </script>

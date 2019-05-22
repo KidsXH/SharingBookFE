@@ -15,4 +15,5 @@ export default keyMirror({
   'CHANGE_SEARCH_TEXT': null,
   'CHANGE_BOOK_LIST': null,
   'CHANGE_TAG_LIST': null,
+  'CHANGE_CATEGORY_LIST': null,
 })
