@@ -13,4 +13,6 @@ export default keyMirror({
   'CHANGE_MODAL_STATUS': null,
   'CHANGE_PROFILE': null,
   'CHANGE_SEARCH_TEXT': null,
+  'CHANGE_BOOK_LIST': null,
+  'CHANGE_TAG_LIST': null,
 })

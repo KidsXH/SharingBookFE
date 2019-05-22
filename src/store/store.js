@@ -48,7 +48,9 @@ export default new Vuex.Store({
       visible: false
     },
     profile: {},
-    searchText: '',
+    searchText: null,
+    bookList: [],
+    tagList: [],
   },
   getters: {
     isAuth: state => {
@@ -60,6 +62,12 @@ export default new Vuex.Store({
     [types.CHANGE_SEARCH_TEXT] (state, { text }) {
       state.searchText = text
     },
+    [types.CHANGE_BOOK_LIST] (state, { list }) {
+      state.bookList = list;
+    },
+    [types.CHANGE_TAG_LIST] (state, { list }) {
+      state.tagList = list;
+    },
   },
   actions: {
     ...userActions,
@@ -68,6 +76,28 @@ export default new Vuex.Store({
     },
     changeSearchText({commit}, payload) {
       commit(types.CHANGE_SEARCH_TEXT, payload)
+    },
+    searchBooks({commit}, params) {
+      api.getBooks(params).then(
+        res => {
+          alert(res.status);
+          commit(types.CHANGE_BOOK_LIST, { list: res.data })
+        },
+        err => {
+          alert(err)
+        }
+      );
+    },
+    getAllTags({commit}) {
+      api.getTags().then(
+        res => {
+          alert(res.status);
+          commit(types.CHANGE_TAG_LIST, { list: res.data.results })
+        },
+        err => {
+          alert(err)
+        }
+      );
     },
   }
 })

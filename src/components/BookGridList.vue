@@ -5,12 +5,12 @@
         <div class="headline">{{$t(title)}}</div>
       </v-flex>
       <v-flex
-        v-for="card in cards"
-        :key="card.title"
+        v-for="book in books"
+        :key="book.book_name"
         xs12 sm6 md4 lg3
         pa-2
       >
-        <book-card v-bind="card"/>
+        <book-card v-bind="book"/>
       </v-flex>
     </v-layout>
     <v-layout v-if="pagination === true" justify-end>
@@ -28,7 +28,7 @@
     name: "BookGridList",
     components: {BookCard},
     props: {
-      cards: {
+      books: {
         type: Array,
         default: () => { return [
           {
@@ -41,14 +41,14 @@
             reviews: 413,  //评论人数
             value: 3,  //星级(开始为综合星级，评论后为评级的星级)
             images: 'https://cdn.vuetifyjs.com/images/cards/cooking.png', //图片位置信息
-            title: '神TM斗破', //标题（书名作者名）
+            book_name: '神TM斗破', //标题（书名作者名）
             author: 'Tom Simth',//作者名
             category: '玄幻武侠',//分类信息（可以为数组逐条显示）
             isFavourite: false, //是否为收藏的书籍、作家
             messages: 'This is test messages', //简介信息
             flex: 4
           },
-        ] }
+        ]}
       },
       title: {
         type: Array,

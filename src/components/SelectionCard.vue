@@ -23,10 +23,10 @@
           </v-btn>
         </v-flex>
         <v-chip mt-0 outline color="orange"
-                v-for="item in tags"
-                :key="item"
+                v-for="tag in tagList"
+                :key="tag.tag_name"
         >
-          {{item}}
+          {{tag.tag_name}}
         </v-chip>
       </v-layout>
       <v-layout pa-1>
@@ -58,6 +58,8 @@
 </template>
 
 <script>
+  import { mapState, mapActions } from 'vuex'
+
   export default {
     name: "SelectionCard",
     data() {
@@ -67,13 +69,17 @@
           'C2',
           'C3',
         ],
-        tags: [
-          'T1',
-          'T2',
-          'T3',
-          'T4',
-        ]
+        tags: ['ts']
       }
+    },
+    created() {
+      this.getAllTags();
+    },
+    computed: {
+      ...mapState(['tagList'])
+    },
+    methods: {
+      ...mapActions(['getAllTags'])
     }
   }
 </script>

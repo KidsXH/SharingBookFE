@@ -54,7 +54,10 @@ export default {
   getProfile() {
     return ajax('profile/', 'get')
   },
-  getBooks(data) {
-    return ajax('books/', 'get', { data })
-  }
+  getBooks(params) {
+    return ajax('books/', 'get', { params })
+  },
+  getTags() {
+    return ajax('tags/', 'get')
+  },
 }
