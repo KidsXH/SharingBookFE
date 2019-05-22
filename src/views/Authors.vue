@@ -115,10 +115,9 @@
 </template>
 
 <script>
-  import BookCard from "../components/BookCard";
   import AuthorCard from "../components/AuthorCard";
   export default {
-    components: {AuthorCard, BookCard},
+    components: {AuthorCard},
     props: ['parentToChild'],
     data () {
       return {

@@ -22,31 +22,24 @@
             @sendValueToParent = "getValueFromChild"
     />
 
-    <login-button @register="showRegisterModal" />
-    <register-modal ref="registerModal"/>
-    <book-detail-card />
-    <Books
-        ref="myBooks"
-        parentToChild= "passValue"
-        v-show="false"
-    >
-    </Books>
+    <v-btn flat icon @click.stop="clickBtnLogin" >
+      <v-icon>account_circle</v-icon>
+    </v-btn>
+
+    <general-modal />
   </v-toolbar>
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
   import SearchInput from "./SearchInput";
-  import LoginButton from "./LoginButton";
-  import RegisterModal from "./RegisterModal";
-  import Books from "../views/Books";
-  import BookDetailCard from "./BookDetailCard";
+  import GeneralModal from "./GeneralModal";
 
   export default {
     name: "NavigationBar",
-    components: {BookDetailCard, Books, RegisterModal, LoginButton, SearchInput},
+    components: {GeneralModal, SearchInput},
     data() {
       return {
-        passValue: "",
         items: [
           { title: 'recommendations', path: '/recommendations' },
           { title: 'rankLists', path: '/rankLists' },
@@ -56,14 +49,10 @@
       }
     },
     methods: {
-      getValueFromChild(value) {
-        this.passValue = value;
-        //this.$refs.myBooks.test(this.passValue);
-        this.$refs.myBooks.add(this.passValue);
-      },
-      showRegisterModal() {
-        this.$refs.registerModal.show()
-      },
+      ...mapActions(['changeModalStatus']),
+      clickBtnLogin() {
+        this.changeModalStatus({mode: 'login', visible: true});
+      }
     }
   }
 </script>

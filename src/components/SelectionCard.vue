@@ -48,7 +48,7 @@
             label="Default order"
             solo
             dense
-            transition="slide-y-transition"
+            :menu-props="{transition:'slide-y-transition'}"
             hide-details
           ></v-select>
         </v-flex>

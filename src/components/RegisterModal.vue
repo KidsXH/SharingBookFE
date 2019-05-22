@@ -11,13 +11,13 @@
               <v-text-field v-model="user.username" :label="$t('username')" prepend-inner-icon="account_box" required></v-text-field>
             </v-flex>
             <v-flex xs12>
-              <v-text-field v-modal="user.password" :label="$t('password')" prepend-inner-icon="lock" required></v-text-field>
+              <v-text-field v-model="user.password" :label="$t('password')" prepend-inner-icon="lock" required></v-text-field>
             </v-flex>
             <v-flex xs12>
-              <v-text-field v-modal="user.confirmPassword" :label="$t('confirmPassword')" prepend-inner-icon="lock" required></v-text-field>
+              <v-text-field v-model="user.confirmPassword" :label="$t('confirmPassword')" prepend-inner-icon="lock" required></v-text-field>
             </v-flex>
             <v-flex xs12>
-              <v-text-field v-modal="user.email" :label="$t('email')" prepend-inner-icon="lock" required></v-text-field>
+              <v-text-field v-model="user.email" :label="$t('email')" prepend-inner-icon="lock" required></v-text-field>
             </v-flex>
           </v-layout>
         </v-container>

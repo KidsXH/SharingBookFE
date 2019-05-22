@@ -5,7 +5,7 @@
         :aspect-ratio="16/9"
         :src="images"
       ></v-img>
-      <v-card-text>
+      <!--v-card-text>
         <p> 书名：{{title}}</p>
         <p> 作者：{{author}}</p>
         <p> 评分：{{value}}</p>
@@ -17,7 +17,7 @@
         </p>
         <p> 所需积分：{{points}}</p>
 
-      </v-card-text>
+      </v-card-text-->
 
       <v-divider></v-divider>
 
@@ -33,7 +33,6 @@
           借书
         </v-btn>
         <v-btn
-          disabled=true
           v-else
         >
           暂无库存
@@ -47,6 +46,12 @@
 <script>
   export default {
     name: "BookDetailCard",
+    data () {
+      return {
+        can_borrowed: false,
+        images: 'https://cdn.vuetifyjs.com/images/cards/cooking.png'
+      }
+    },
     computed: {
       bookDetailDialog: {
         get () {
