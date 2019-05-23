@@ -6,14 +6,14 @@
       </v-flex>
       <v-flex xs12 pa-2/>
       <v-flex xs12>
-        <book-grid-list :books="bookList" pagination/>
+        <book-grid-list :books="books.bookList" pagination/>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+  import { mapState, mapActions } from 'vuex'
   import SelectionCard from "../components/SelectionCard";
   import BookGridList from "../components/BookGridList";
 
@@ -22,8 +22,14 @@
     data() {
       return {}
     },
+    created() {
+      this.searchBooks()
+    },
     computed: {
-      ...mapState(['bookList']),
+      ...mapState(['books']),
+    },
+    methods: {
+      ...mapActions(['searchBooks'])
     },
   }
 </script>

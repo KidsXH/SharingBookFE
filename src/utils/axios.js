@@ -62,5 +62,5 @@ export default {
   },
   getCategories() {
     return ajax('categories/', 'get')
-  }
+  },
 }

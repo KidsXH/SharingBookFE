@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import {mapActions} from 'vuex'
   import api from '../utils/axios'
 
   export default {
@@ -14,15 +14,12 @@
       ...mapActions(['clearProfile', 'changeModalStatus']),
       clickBtnLogout() {
         api.logout().then(
-          res => {
-            if (res.status === 200) {
-              alert('OK');
-              this.clearProfile();
-              this.changeModalStatus({visible: false})
-            }
-            else {
-              alert('Fail');
-            }
+          () => {
+            this.clearProfile();
+            this.changeModalStatus({visible: false})
+          },
+          err => {
+            alert(err)
           }
         )
       }

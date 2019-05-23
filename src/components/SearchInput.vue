@@ -6,6 +6,7 @@
       prepend-inner-icon="search"
       clearable
       single-line
+      @keyup.enter="handleSearch"
     ></v-text-field>
   </div>
 </template>
@@ -16,25 +17,15 @@
   export default {
     data () {
       return {
-        name: "SearchInput",
-      }
-    },
-    computed: {
-      text: {
-        get() {
-          return this.$store.state.searchText
-        },
-        set(value) {
-          this.changeSearchText({text: value})
-        }
+        text: null
       }
     },
     methods: {
-      ...mapActions(['changeSearchText']),
-      search: function(e) {
+      ...mapActions(['changeSearchParams', 'searchBooks']),
+      handleSearch: function() {
+        this.changeSearchParams({searchText: this.text});
+        this.searchBooks();
         this.$router.push({ path:'/books'});
-        this.value = e.target.value;
-        this.$emit('sendValueToParent',this.value);
       },
     }
   }

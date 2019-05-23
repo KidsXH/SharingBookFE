@@ -9,6 +9,7 @@
   import login from './Login'
   import register from './Register'
   import profile from './ProfileCard'
+  import bookDetail from './BookDetailCard'
 
   export default {
     name: "GeneralModal",
@@ -16,6 +17,7 @@
       login,
       register,
       profile,
+      bookDetail,
     },
     computed: {
       ...mapState(['modalStatus']),

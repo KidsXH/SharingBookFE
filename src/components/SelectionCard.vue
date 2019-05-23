@@ -1,33 +1,52 @@
 <template>
   <v-card style="border-radius: 10px">
     <v-container pa-2>
-      <v-layout align-center pa-1>
-        <v-flex xs1 class="title text-sm-center">
+      <v-layout align-center justify-start pa-1>
+        <v-flex lg1 xs12 class="title text-sm-center">
           <v-btn dark color="blue accent-3">
-            <v-icon left>tag_faces</v-icon>
+            <v-icon left>category</v-icon>
             {{$t('categories')}}
           </v-btn>
         </v-flex>
-        <v-chip mt-0 outline color="blue"
-                v-for="cat in categoryList"
-                :key="cat.category_name"
-        >
-          {{cat.category_name}}
-        </v-chip>
+        <v-flex>
+          <span v-for="category in categoryList" :key="category.category_name">
+          <v-chip mt-0 color="blue" dark
+                  @click="clearCategory()"
+                  v-if="category.category_name === searchParams.category"
+          >
+            {{category.category_name}}
+          </v-chip>
+          <v-chip mt-0 outline color="blue"
+                  @click="chooseCategory(category)"
+                  v-else
+          >
+            {{category.category_name}}
+          </v-chip>
+          </span>
+        </v-flex>
       </v-layout>
       <v-layout align-center pa-1>
-        <v-flex xs1 class="title text-sm-center">
+        <v-flex lg1 xs12 class="title text-sm-center">
           <v-btn dark color="orange accent-3">
-            <v-icon left>tag_faces</v-icon>
+            <v-icon left>label</v-icon>
             {{$t('tags')}}
           </v-btn>
         </v-flex>
-        <v-chip mt-0 outline color="orange"
-                v-for="tag in tagList"
-                :key="tag.tag_name"
-        >
-          {{tag.tag_name}}
-        </v-chip>
+        <span v-for="tag in tagList" :key="tag.tag_name">
+          <v-chip mt-0 color="orange" dark
+                  @click="clearTag(tag)"
+                  v-if="isSelectedTag(tag)"
+          >
+            {{tag.tag_name}}
+          </v-chip>
+          <v-chip mt-0 outline color="orange"
+                  @click="chooseTag(tag)"
+                  v-else
+          >
+            {{tag.tag_name}}
+          </v-chip>
+          </span>
+
       </v-layout>
       <v-layout pa-1>
         <v-flex xs12>
@@ -36,15 +55,15 @@
       </v-layout>
       <v-layout align-center pa-1>
         <v-chip mt-0 outline color="red"
-                v-for="item in tags"
-                :key="item"
+                v-for="tag in selectedTags"
+                :key="tag"
         >
-          {{item}}
+          {{tag}}
         </v-chip>
-        <v-spacer />
+        <v-spacer/>
         <v-flex xs2>
           <v-select
-            :items="tags"
+            :items="selectedTags"
             label="Default order"
             solo
             dense
@@ -58,29 +77,49 @@
 </template>
 
 <script>
-  import { mapState, mapActions } from 'vuex'
+  import {mapState, mapGetters, mapActions} from 'vuex'
+  import utils from '../utils/utils'
 
   export default {
     name: "SelectionCard",
     data() {
-      return {
-        categories: [
-          'C1',
-          'C2',
-          'C3',
-        ],
-        tags: ['ts']
-      }
+      return {}
     },
     created() {
       this.getAllTags();
       this.getAllCategories();
     },
     computed: {
-      ...mapState(['tagList', 'categoryList'])
+      ...mapState(['tagList', 'categoryList', 'searchParams']),
+      ...mapGetters(['selectedTags']),
     },
     methods: {
-      ...mapActions(['getAllTags', 'getAllCategories'])
+      ...mapActions(['getAllTags', 'getAllCategories', "changeSearchParams", "searchBooks"]),
+      chooseCategory(category) {
+        this.changeSearchParams({category: category.category_name});
+        this.searchBooks();
+      },
+      clearCategory() {
+        this.changeSearchParams({category: null});
+        this.searchBooks();
+      },
+      chooseTag(tag) {
+        let list = this.searchParams.tags;
+        let value = tag.tag_name;
+        utils.insertIntoOrderedList(list, value);
+        this.changeSearchParams({tags: list});
+        this.searchBooks();
+      },
+      clearTag(tag) {
+        let t = this.searchParams.tags;
+        let id = utils.binarySearch(t, tag.tag_name);
+        t.splice(id, 1);
+        this.changeSearchParams({tags: t});
+        this.searchBooks();
+      },
+      isSelectedTag(tag) {
+        return utils.binarySearch(this.searchParams.tags, tag.tag_name) !== -1;
+      }
     }
   }
 </script>

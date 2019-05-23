@@ -2,7 +2,7 @@
   <v-app id="app">
     <navigation-bar />
     <v-content>
-      <router-view />
+        <router-view />
     </v-content>
     <v-footer />
   </v-app>

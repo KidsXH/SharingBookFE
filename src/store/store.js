@@ -48,44 +48,64 @@ export default new Vuex.Store({
       visible: false
     },
     profile: {},
-    searchText: null,
-    bookList: [],
+    books: {},
     tagList: [],
     categoryList: [],
+    bookDetail: {},
+    searchParams: {
+      searchText: null,
+      category: null,
+      tags: [],
+      sortKey: null,
+      sortOrder: null,
+    },
   },
   getters: {
     isAuth: state => {
       return !!state.profile.id
-    }
+    },
+    selectedTags: state => state.books.keywords || []
   },
   mutations: {
     ...userMutations,
-    [types.CHANGE_SEARCH_TEXT] (state, { text }) {
-      state.searchText = text
+    [types.CHANGE_SEARCH_PARAMS](state, {searchText, category, tags, sortKey, sortOrder}) {
+      if (searchText !== undefined) state.searchParams.searchText = searchText;
+      if (category !== undefined) state.searchParams.category = category;
+      if (tags !== undefined) state.searchParams.tags = tags;
+      if (sortKey !== undefined) state.searchParams.sortKey = sortKey;
+      if (sortOrder !== undefined) state.searchParams.sortOrder = sortOrder;
     },
-    [types.CHANGE_BOOK_LIST] (state, { list }) {
-      state.bookList = list;
+    [types.CHANGE_BOOKS](state, {data}) {
+      state.books = data;
     },
-    [types.CHANGE_TAG_LIST] (state, { list }) {
+    [types.CHANGE_TAG_LIST](state, {list}) {
       state.tagList = list;
     },
-    [types.CHANGE_CATEGORY_LIST] (state, { list }) {
+    [types.CHANGE_CATEGORY_LIST](state, {list}) {
       state.categoryList = list;
     },
+    [types.CHANGE_SELECTED_TAGS](state, {list}) {
+      state.selectedTags = list;
+    },
+    [types.CHANGE_BOOK_DETAIL](state, {data}) {
+      state.bookDetail = data
+    }
   },
   actions: {
     ...userActions,
     changeModalStatus({commit}, payload) {
       commit(types.CHANGE_MODAL_STATUS, payload)
     },
-    changeSearchText({commit}, payload) {
-      commit(types.CHANGE_SEARCH_TEXT, payload)
+    changeSearchParams({commit}, payload) {
+      commit(types.CHANGE_SEARCH_PARAMS, payload);
     },
-    searchBooks({commit}, params) {
-      api.getBooks(params).then(
+    changeBookDetail({commit}, payload) {
+      commit(types.CHANGE_BOOK_DETAIL, payload)
+    },
+    searchBooks({commit, state}) {
+      api.getBooks(state.searchParams).then(
         res => {
-          alert(res.status);
-          commit(types.CHANGE_BOOK_LIST, { list: res.data })
+          commit(types.CHANGE_BOOKS, {data: res.data})
         },
         err => {
           alert(err)
@@ -95,7 +115,7 @@ export default new Vuex.Store({
     getAllTags({commit}) {
       api.getTags().then(
         res => {
-          commit(types.CHANGE_TAG_LIST, { list: res.data.results })
+          commit(types.CHANGE_TAG_LIST, {list: res.data.results})
         },
         err => {
           alert(err)
@@ -105,7 +125,7 @@ export default new Vuex.Store({
     getAllCategories({commit}) {
       api.getCategories().then(
         res => {
-          commit(types.CHANGE_CATEGORY_LIST, { list: res.data.results })
+          commit(types.CHANGE_CATEGORY_LIST, {list: res.data.results})
         },
         err => {
           alert(err)
