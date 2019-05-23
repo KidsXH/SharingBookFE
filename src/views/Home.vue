@@ -5,7 +5,7 @@
         <v-flex xs12 class="blank-row"/>
         <v-flex xs12>
           <h1 class="font-weight-light">{{$t('hello')}}</h1>
-          <p class="font-weight-thin grey--text">{{$t('hello')}}</p>
+          <p class="font-weight-thin grey--text">{{$t('description')}}</p>
         </v-flex>
         <v-flex xs12 class="blank-row"/>
         <v-flex xs12>

@@ -1,6 +1,6 @@
 {
-  "message": "hello i18n !!",
-  "hello": "Hello World!",
+  "hello": "Hello Book!",
+  "description": "Sharing Book System",
   "recommendations": "推荐",
   "books": "书籍",
   "bookLists": "书单",

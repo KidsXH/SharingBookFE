@@ -48,7 +48,7 @@
           { title: 'recommendations', path: '/recommendations' },
           { title: 'rankLists', path: '/rankLists' },
           { title: 'books', path: '/books' },
-          { title: 'authors', path: '/authors'}
+          // { title: 'authors', path: '/authors'}, Incomplete part
         ]
       }
     },
