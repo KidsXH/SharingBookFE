@@ -22,7 +22,7 @@
                 </v-flex>
                 <v-flex>
                   <v-rating
-                    :value="book.rating"
+                    :value="parseFloat(book.rating)"
                     color="amber"
                     dense
                     half-increments

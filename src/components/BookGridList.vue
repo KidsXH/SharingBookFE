@@ -13,12 +13,13 @@
         <book-card :book="book"/>
       </v-flex>
     </v-layout>
-    <v-layout v-if="pagination === true" justify-end>
+    <!-- Incomplete part -->
+    <!--v-layout v-if="pagination === true" justify-end>
       <v-pagination
         v-model="page"
         :length="4"
       ></v-pagination>
-    </v-layout>
+    </v-layout-->
   </v-container>
 </template>
 
@@ -42,5 +43,4 @@
 </script>
 
 <style scoped>
-
 </style>

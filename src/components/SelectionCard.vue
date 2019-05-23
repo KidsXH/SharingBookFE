@@ -46,7 +46,6 @@
             {{tag.tag_name}}
           </v-chip>
           </span>
-
       </v-layout>
       <v-layout pa-1>
         <v-flex xs12>
@@ -54,17 +53,18 @@
         </v-flex>
       </v-layout>
       <v-layout align-center pa-1>
-        <v-chip mt-0 outline color="red"
+        <!-- Incomplete part -->
+        <!--v-chip mt-0 outline color="red"
                 v-for="tag in selectedTags"
                 :key="tag"
         >
           {{tag}}
-        </v-chip>
+        </v-chip-->
         <v-spacer/>
         <v-flex xs2>
           <v-select
-            :items="selectedTags"
-            label="Default order"
+            :items="orderItems"
+            label="Order By (default)"
             solo
             dense
             :menu-props="{transition:'slide-y-transition'}"
@@ -83,7 +83,9 @@
   export default {
     name: "SelectionCard",
     data() {
-      return {}
+      return {
+        orderItems: ['default', 'book_name', 'trending', 'rating', 'book_credit'],
+      }
     },
     created() {
       this.getAllTags();
@@ -125,5 +127,4 @@
 </script>
 
 <style scoped>
-
 </style>

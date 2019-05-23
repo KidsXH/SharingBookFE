@@ -6,7 +6,7 @@
       </v-flex>
       <v-flex xs12 pa-2/>
       <v-flex xs12>
-        <book-grid-list :books="books.bookList" pagination/>
+        <book-grid-list :books="books.bookList"/>
       </v-flex>
     </v-layout>
   </v-container>
