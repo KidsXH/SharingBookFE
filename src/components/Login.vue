@@ -17,6 +17,7 @@
             <v-text-field v-model="password"
                           :label="$t('password')"
                           prepend-inner-icon="lock"
+                          type="password"
                           required>
             </v-text-field>
           </v-flex>

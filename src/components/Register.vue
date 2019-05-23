@@ -12,10 +12,12 @@
           </v-flex>
           <v-flex xs12>
             <v-text-field v-model="user.password" :label="$t('password')" prepend-inner-icon="lock"
+                          type="password"
                           required></v-text-field>
           </v-flex>
           <v-flex xs12>
             <v-text-field v-model="user.confirmPassword" :label="$t('confirmPassword')" prepend-inner-icon="lock"
+                          type="password"
                           required></v-text-field>
           </v-flex>
           <v-flex xs12>

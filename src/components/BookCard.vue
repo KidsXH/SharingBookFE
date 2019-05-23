@@ -12,7 +12,7 @@
             <v-flex xs5>
               <v-img
                 :aspect-ratio="210/297"
-                :src="book.picture_path"
+                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
               />
             </v-flex>
             <v-flex xs7>
